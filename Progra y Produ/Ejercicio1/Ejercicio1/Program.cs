@@ -19,15 +19,26 @@ public class Pokemon:Type
         this.type = type;
     }
 
+    public string ShowDetails()
+    {
+        return $"{name},{weight},{exp}, {type}";
+    }
+
 }
 
 
 
-class program
+class Program
 {
+
     static void Main(string[] args)
     {
+        bool exit = false;
         Pokemon charmander = new Pokemon("Charmander", 8.5f, 1500,"fire");
+        while (!exit)
+        {
+            Console.WriteLine(charmander.ShowDetails());
+        }
         
     }
 }
