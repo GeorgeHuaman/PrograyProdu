@@ -4,17 +4,31 @@ Pokeballs masterball = new Pokeballs(Balls.masterball);
 while (!exit)
 {
     Console.WriteLine(charmander.ShowDetails());
-    string selection = Console.ReadLine();
-    switch (selection)
+    if (charmander.states == States.wild)
     {
-        case "1":
-            break;
-        case "2":
-            break;
-        case "3":
-            break;
-        default:
-            break;
+        Console.WriteLine("Puedes capturarlo");
+        Console.WriteLine("1 para capturar, 2 para cerrar el programa");
+        string selection = Console.ReadLine();
+        switch (selection)
+        {
+            case "1":
+                if (charmander.Probability(masterball) > 4)
+                {
+                    charmander.states = States.captured;
+                    Console.WriteLine(charmander.ShowDetails());
+                }
+                else
+                    Console.WriteLine("Se escapo");
+                
+                break;
+            case "2":
+                exit = true;
+                break;
+            default:
+                Console.WriteLine("Intenta otro Numero");
+                continue;
+        }
+        
     }
     exit = true;
 }
